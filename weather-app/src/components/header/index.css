@@ -1,0 +1,16 @@
+logo-cot, .title, .sub-title {
+    float: left;
+    }
+    .logo-cot {
+    margin-right: 0.4em;
+    margin-top: -0.5em;
+    }
+    .title {
+    font-size: 1.2em;
+    }
+    .sub-title {
+    font-size: 0.8em;
+    }
+    .ui.inverted.stackable.top.fixed.menu {
+    max-width: 100vw;
+    }
