@@ -1,0 +1,13 @@
+a.ui.custom-mini img {
+    height: 1.5em;
+    width: auto;
+}
+.grid div.row.row-remove-padding {
+padding: 0;
+}
+.ui.inverted.vertical.segment {
+margin-top: 2em;
+padding-top: 1em;
+padding-bottom: 3em;
+width: 100%;
+}
