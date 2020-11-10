@@ -26,8 +26,7 @@ import {
     getForecastCurrentDay,
     getForecastRowDayNames,
     getForecastRowIcons,
-    getForecastRowRisesAndSets,
-    getForecastRowTemperatures,
+    getForecastRowRisesAndSets, getForecastRowTemperatures,
 } from './data-snippets';
 import { getDateStringFromEpoch, getDayStringFromEpoch, isObjectEmpty }
     from '../../engine/tools';
@@ -52,18 +51,65 @@ class WeatherReport extends React.Component {
         };
     }
     render() {
+        let sUnit = '';
         const { activeUnit, defaultUnit, isBrowserMetric } = this.state;
         const isEmpty = isObjectEmpty(this.props);
+        if (isBrowserMetric) {
+            sUnit = activeUnit ? 'metric' : 'imperial';
+        } else {
+            sUnit = activeUnit ? 'imperial' : 'metric';
+        }
+        const { current, forecast, location } = this.props || {};
+        let isDay = true;
+        let nCondition = '';
+        let forecastCurrentDay = {}; if (!isEmpty) {
+            if (current[currentUnitType.other.isDay] === 0) {
+                isDay = false;
+            }
+            nCondition = current.condition.code;
+            forecastCurrentDay = getForecastCurrentDay(forecast.forecastday[0],
+                forecastUnitType, sUnit);
+        }
         return (
             <div>
                 {isEmpty && (
                     <Grid divided="vertically">
                         <Grid.Row columns={1}>
                             <Grid.Column textAlign="center">
-                                <h2>Weather Report
-</h2>
+                                <h2>
+                                    Weather Report
+    </h2>
                             </Grid.Column>
                         </Grid.Row>
+                    </Grid>
+                )}
+                {!isEmpty && (
+                    <Grid>
+                        <Grid.Row columns={1}>
+                            <Grid.Column>
+                                <Header size="tiny" floated="right">
+                                    {getDayStringFromEpoch(current[currentUnitType.other.lastUpdated], 'long')}
+                                    {', '}
+                                    {getDateStringFromEpoch(current[currentUnitType.other.lastUpdated])}
+                                </Header>
+                            </Grid.Column>
+                            <Grid.Column textAlign="center">
+                                <Header as="h2" icon textAlign="center">
+                                    <i className={`weather-spacer wi
+    wi-${getApixuIconName(isDay, nCondition)} ${getkApixuColor(isDay,
+                                        nCondition)}`} />
+                                    <Header.Content><br />
+                                        {current.condition.text}
+                                    </Header.Content>
+                                    <Statistic size="huge">
+                                        <Statistic.Value>
+                                            {current[currentUnitType[sUnit].temperature.actual]}
+                                        </Statistic.Value>
+                                    </Statistic>
+                                </Header>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Divider />
                     </Grid>
                 )}
             </div>
