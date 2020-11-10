@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from 'semantic-ui-react';
 import './index.css';
 import Header from './components/header';
+import Main from './components/main';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,11 +14,9 @@ class App extends React.Component {
       <div>
         <header>
           <Header />
-        </header>
-        <main>
+        </header><main>
           <Container text>
-            <div className="page-content-container" />
-            <h1>Hello World!</h1>
+            <Main />
           </Container>
         </main>
       </div>
