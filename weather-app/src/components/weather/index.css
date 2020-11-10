@@ -1,0 +1,41 @@
+.ui.center.aligned.middle.aligned.equal.width.grid > div > div {
+  text-align: left;
+}
+.ui.center.aligned.middle.aligned.equal.width.grid > div > div > div > div > p {
+  text-align: center;
+}
+.ui.grid.compacted div.row {
+  padding: 0.2em 0 0.2em 0;
+  margin: 0em;
+}
+.ui.grid div.row.compacted-row {
+  margin: 0em;
+  padding: 0em;
+}
+.attach-statistic {
+  float: right;
+  margin-top: -0.46em;
+  margin-left: 0.1em;
+}
+.wi {
+  font-size: 2em;
+}
+/*
+        https://htmlcolorcodes.com/color-names/
+        NOTE: not an exact match
+        */
+.wi.darkgrey {
+  color: #696969;
+}
+.wi.darkorange {
+  color: #ff8c00;
+}
+.wi.grey {
+  color: #cccccc;
+}
+.wi.powderblue {
+  color: #b0e0e6;
+}
+.wi.midnightblue {
+  color: #191970;
+}
